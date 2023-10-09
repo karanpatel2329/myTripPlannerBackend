@@ -108,7 +108,7 @@ removeFromBookmark = async (req, res) => {
       return res.status(401).json({ error: "Access denied. Token missing." });
     }
     const decoded = jwt.verify(token, process.env.JWTTOKEN);
-    const bookmark = await Bookmark.findByIdAndDelete(req.body.id);
+    const bookmark = await Bookmark.findOneAndDelete({destination_id:req.body._id,user_id:decoded._id});
     res.status(200).json({
       data: "Deleted bookmark",
       message: "Success",
