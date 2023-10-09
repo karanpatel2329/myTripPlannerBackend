@@ -142,7 +142,7 @@ getMyBookmark = async (req, res) => {
       
       if(attractionIds.includes(e._id.toString())){
         console.log(e);
-        k.push(e);
+        k.push({"attraction":e,"destinationId":element.id});
       }
     });
   });
